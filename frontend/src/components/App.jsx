@@ -1,7 +1,6 @@
 import React from 'react';
+import LandingPage from './LandingPage/LandingPage';
 
-function App() {
-	return <h1>Suuhhhhh homie</h1>;
+export default function App() {
+	return <LandingPage />;
 }
-
-export default App;
