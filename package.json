@@ -1,0 +1,23 @@
+{
+  "name": "trip-bnb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g-popovic/trip-bnb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/g-popovic/trip-bnb/issues"
+  },
+  "homepage": "https://github.com/g-popovic/trip-bnb#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
