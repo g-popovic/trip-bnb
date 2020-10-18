@@ -1,0 +1,138 @@
+$transitionSpeed: 0.5s;
+
+.no-scroll {
+	overflow: hidden;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+.collapse.navbar-collapse {
+	justify-content: flex-end;
+}
+
+nav.navbar {
+	padding-left: 2rem;
+	padding-right: 2rem;
+	z-index: 10;
+}
+
+.landing-page-wrapper {
+	width: 80%;
+	max-width: 28rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+
+	transition: $transitionSpeed opacity ease;
+}
+
+.landing-page-wrapper-hidden {
+	opacity: 0;
+}
+
+.background-image {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-image: url(https://source.unsplash.com/collection/8994315/);
+
+	&::after {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100vw;
+		height: 100vh;
+		content: ' ';
+
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+}
+
+.search-section-wrapper {
+	padding-bottom: 3rem;
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	position: absolute;
+
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.search-section {
+	background: white;
+	width: 100%;
+	min-height: 30rem;
+	position: absolute;
+	left: 50%;
+	top: 100%;
+	transform: translateX(-50%);
+	z-index: 1;
+	padding: 2rem 1.4rem;
+
+	transition: $transitionSpeed 0.2s ease;
+}
+
+@media only screen and (min-width: 992px) {
+	.search-section {
+		width: 90%;
+		max-width: 80rem;
+		margin-bottom: 5rem;
+		border-radius: 5px;
+		padding: 2rem;
+	}
+}
+
+.search-section-wrapper-active {
+	overflow: visible;
+
+	.search-section {
+		top: 12rem;
+	}
+
+	@media only screen and (min-width: 992px) {
+		.search-section {
+			top: 10rem;
+		}
+	}
+}
+
+.search-section .form-row {
+	margin-bottom: 1rem;
+}
+
+.listing-rating {
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	margin: 0;
+
+	span {
+		margin: 0 0.2rem 0 0.3rem;
+	}
+}
+
+.listing .card-img {
+	height: 12rem;
+}
+
+@media only screen and (min-width: 992px) {
+	.listing .card-body {
+		// padding: 0.5rem 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+	}
+}
