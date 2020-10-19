@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from '../Misc/Navbar';
+import React, { useState } from 'react';
 import Listing from './Listing';
 import Filters from './Filters';
 
 export default function LandingPage() {
-	const [test, setTest] = useState(false);
+	const [test, setTest] = useState(true);
 
 	function searchListings(e) {
 		e.preventDefault();
@@ -22,7 +21,7 @@ export default function LandingPage() {
 				<div className="search-section">
 					<Filters />
 					<div className="row">
-						<div className="listings col-lg-8 col-12">
+						<div className="listings col-xl-7 col-lg-8 col-12">
 							<Listing />
 							<Listing />
 							<Listing />
@@ -65,7 +64,6 @@ export default function LandingPage() {
 					</nav>
 				</div>
 			</div>
-			<Navbar />
 			<form
 				onSubmit={searchListings}
 				className={
