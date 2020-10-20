@@ -161,8 +161,8 @@ nav.navbar {
   .carousel-control-prev:hover .carousel-control-next-icon,
   .carousel-control-next:hover .carousel-control-prev-icon,
   .carousel-control-next:hover .carousel-control-next-icon {
-    -webkit-transform: scale(1.3);
-            transform: scale(1.3);
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
   }
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
@@ -185,7 +185,9 @@ nav.navbar {
 }
 
 .listing-location {
+  margin-top: -0.2rem;
   font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .book-now-section {
@@ -204,10 +206,13 @@ nav.navbar {
 @media only screen and (min-width: 992px) {
   .book-now-section {
     border-color: #aaaaaa;
-    margin: 4rem auto 0;
+    margin: 2rem auto 0;
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 3rem;
   }
   .book-now-section .DateRangePicker {
     margin: 1rem 0 1.5rem;
@@ -216,7 +221,7 @@ nav.navbar {
 
 .listing-map {
   width: 100%;
-  height: 10rem;
+  height: 25rem;
   background-color: #cccccc;
 }
 
@@ -272,4 +277,109 @@ nav.navbar {
 .host-contact-info li svg {
   font-size: 1.5rem;
   margin-right: 0.5rem;
+}
+
+.listing-images {
+  height: 30rem;
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listing-images div {
+  margin: 0;
+  padding: 0;
+}
+
+.listing-images img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  padding: 0.5rem;
+}
+
+.listing-images > div {
+  height: 100%;
+}
+
+.listing-images > div div.row {
+  height: 50%;
+}
+
+.listing-images > div > div:first-child img {
+  border-radius: 1.2rem 0 0 1.2rem;
+}
+
+.listing-images > div > div:last-child div:first-child div:last-child img {
+  border-radius: 0 1.2rem 0 0;
+}
+
+.listing-images > div > div:last-child div:last-child div:last-child img {
+  border-radius: 0 0 1.2rem 0;
+}
+
+.listing-title {
+  margin-bottom: 2rem;
+}
+
+.full-screen-carousel {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.full-screen-carousel .carousel {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.full-screen-carousel .carousel .carousel-inner {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.full-screen-carousel .carousel .carousel-item img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  width: 80vw;
+  height: 80vh;
+}
+
+.full-screen-carousel .carousel .carousel-control-prev,
+.full-screen-carousel .carousel .carousel-control-next {
+  width: 30%;
+}
+
+.full-screen-carousel-active {
+  opacity: 1;
+  z-index: 100;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.carousel-close {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }

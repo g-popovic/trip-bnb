@@ -1,85 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BookNowSection from './BookNowSection';
+import Carousel from './Carousel';
+import Map from './Map';
 
 export default function ListingPage() {
+	const [test, setTest] = useState(false);
+
 	return (
 		<>
+			<div
+				className={
+					'full-screen-carousel' +
+					(test ? ' full-screen-carousel-active' : '')
+				}>
+				<Carousel />
+				<button
+					type="button"
+					class="carousel-close btn btn-primary"
+					onClick={() => setTest(false)}
+					aria-label="Close">
+					Close
+				</button>
+			</div>
 			<div className="background-image"></div>
 			<div className="search-section-wrapper search-section-wrapper-active">
 				<div className="search-section listing">
-					<div className="row">
-						<div
-							id="carouselExampleIndicators"
-							class="carousel slide col-lg-8 col-12"
-							data-ride="carousel"
-							data-interval="false">
-							<ol class="carousel-indicators">
-								<li
-									data-target="#carouselExampleIndicators"
-									data-slide-to="0"
-									class="active"></li>
-								<li
-									data-target="#carouselExampleIndicators"
-									data-slide-to="1"></li>
-								<li
-									data-target="#carouselExampleIndicators"
-									data-slide-to="2"></li>
-							</ol>
-							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img
-										src="https://a0.muscache.com/im/pictures/faded4c4-e8f2-4978-8d1d-b9e4438d836a.jpg?im_w=1200"
-										class="d-block w-100"
-										alt="..."
-									/>
+					<h2 onClick={() => setTest(true)}>
+						Amazing apartment with awesome view
+					</h2>
+					<p className="text-muted listing-title listing-location">
+						Budva, Montenegro
+					</p>
+					<div className="d-block d-lg-none">
+						<Carousel />
+					</div>
+
+					<div className="d-none d-lg-block container listing-images">
+						<div className="row">
+							<div className="col-lg-6">
+								<img src="https://a0.muscache.com/im/pictures/16fea089-1b30-48f9-ab64-8e7eb19bf742.jpg?im_w=960" />
+							</div>
+							<div className="col-lg-6">
+								<div className="row">
+									<div className="col-6">
+										<img src="https://a0.muscache.com/im/pictures/16fea089-1b30-48f9-ab64-8e7eb19bf742.jpg?im_w=960" />
+									</div>
+									<div className="col-6">
+										<img src="https://a0.muscache.com/im/pictures/16fea089-1b30-48f9-ab64-8e7eb19bf742.jpg?im_w=960" />
+									</div>
 								</div>
-								<div class="carousel-item">
-									<img
-										src="https://a0.muscache.com/im/pictures/16fea089-1b30-48f9-ab64-8e7eb19bf742.jpg?im_w=960"
-										class="d-block w-100"
-										alt="..."
-									/>
-								</div>
-								<div class="carousel-item">
-									<img
-										src="https://a0.muscache.com/im/pictures/faded4c4-e8f2-4978-8d1d-b9e4438d836a.jpg?im_w=1200"
-										class="d-block w-100"
-										alt="..."
-									/>
+								<div className="row">
+									<div className="col-6">
+										<img src="https://a0.muscache.com/im/pictures/16fea089-1b30-48f9-ab64-8e7eb19bf742.jpg?im_w=960" />
+									</div>
+									<div className="col-6">
+										<img src="https://a0.muscache.com/im/pictures/16fea089-1b30-48f9-ab64-8e7eb19bf742.jpg?im_w=960" />
+									</div>
 								</div>
 							</div>
-							<a
-								class="carousel-control-prev"
-								href="#carouselExampleIndicators"
-								role="button"
-								data-slide="prev">
-								<span
-									class="carousel-control-prev-icon"
-									aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a
-								class="carousel-control-next"
-								href="#carouselExampleIndicators"
-								role="button"
-								data-slide="next">
-								<span
-									class="carousel-control-next-icon"
-									aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
 						</div>
-						<div className="col-lg-4 col-12">
+					</div>
+					{/* <div className="row">
+						<Carousel />
+
+						<div className="col-lg-6 col-12">
 							<h2>Amazing apartment with awesome view</h2>
 							<u className="listing-location text-muted text-medium overflow-hidden text-truncate">
 								Budva, Montenegro
 							</u>
-							<BookNowSection />
 						</div>
-					</div>
+					</div> */}
 					<hr />
 					<div className="row">
-						<div className="col-12 col-lg-7 listing-description">
+						<div className="col-12 col-lg-8 listing-description">
 							<section>
 								<h3>About The Place</h3>
 								<p>
@@ -138,10 +131,14 @@ export default function ListingPage() {
 								</ul>
 							</section>
 							<hr />
-							<div className="listing-map">Map</div>
+							<div className="listing-map">
+								<Map />
+							</div>
 						</div>
-						<div className="col-12 col-lg-5">
-							<div className="listing-map">Ads</div>
+						<div className="col-12 col-lg-4">
+							<BookNowSection />
+
+							{/* <div className="listing-map">Ads</div> */}
 						</div>
 					</div>
 				</div>
