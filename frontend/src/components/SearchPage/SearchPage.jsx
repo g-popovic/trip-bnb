@@ -35,7 +35,13 @@ export default function LandingPage() {
 							<Listing />
 						</div>
 						<div className="col-xl-5 col-lg-4 col-12 search-map order-lg-2 order-1">
-							<Map />
+							<Map
+								markers={[
+									{ lat: 72.35, lng: -41.61, price: 24 },
+									{ lat: 72.34, lng: -41.64, price: 35 },
+									{ lat: 72.33, lng: -41.62, price: 12 }
+								]}
+							/>
 						</div>
 					</div>
 

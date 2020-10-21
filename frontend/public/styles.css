@@ -409,3 +409,7 @@ nav.navbar {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
+
+.add-property-map {
+  height: 10rem;
+}
