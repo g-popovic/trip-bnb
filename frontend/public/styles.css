@@ -128,11 +128,36 @@ nav.navbar {
 }
 
 .listing .card-img {
-  height: 12rem;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+}
+
+.search-map {
+  height: 20rem;
+  margin-bottom: 2rem;
+  border: 1px solid #cccccc;
+}
+
+@media only screen and (min-width: 992px) {
+  .search-map {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    height: initial;
+    margin-bottom: 0;
+    border: none;
+    padding: 0;
+  }
+  .listing:last-child {
+    margin-bottom: 0 !important;
+  }
+  .listing .card-img {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -212,6 +237,7 @@ nav.navbar {
     width: fit-content;
     position: -webkit-sticky;
     position: sticky;
+    margin-top: 0.5rem;
     top: 3rem;
   }
   .book-now-section .DateRangePicker {
@@ -378,7 +404,7 @@ nav.navbar {
 
 .carousel-close {
   position: absolute;
-  top: 1rem;
+  bottom: 1rem;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BookNowSection from './BookNowSection';
 import Carousel from './Carousel';
-import Map from './Map';
+import Map from '../Misc/Map';
 
 export default function ListingPage() {
 	const [test, setTest] = useState(false);
@@ -137,8 +137,6 @@ export default function ListingPage() {
 						</div>
 						<div className="col-12 col-lg-4">
 							<BookNowSection />
-
-							{/* <div className="listing-map">Ads</div> */}
 						</div>
 					</div>
 				</div>

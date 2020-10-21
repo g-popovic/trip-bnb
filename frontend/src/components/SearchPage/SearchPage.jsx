@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Listing from './Listing';
 import Filters from './Filters';
+import Map from '../Misc/Map';
 
 export default function LandingPage() {
-	const [test, setTest] = useState(true);
+	const [test, setTest] = useState(false);
 
 	function searchListings(e) {
 		e.preventDefault();
@@ -20,16 +21,25 @@ export default function LandingPage() {
 				}>
 				<div className="search-section">
 					<Filters />
-					<div className="row">
-						<div className="listings col-xl-7 col-lg-8 col-12">
+					<div className="row pb-3">
+						<div className="listings col-xl-7 col-lg-8 col-12 order-lg-1 order-2">
+							<Listing />
+							<Listing />
+							<Listing />
+							<Listing />
+							<Listing />
+							<Listing />
 							<Listing />
 							<Listing />
 							<Listing />
 							<Listing />
 						</div>
+						<div className="col-xl-5 col-lg-4 col-12 search-map order-lg-2 order-1">
+							<Map />
+						</div>
 					</div>
 
-					<nav aria-label="Page navigation example">
+					<nav className="mt-3">
 						<ul className="pagination justify-content-center">
 							<li className="page-item disabled">
 								<a
