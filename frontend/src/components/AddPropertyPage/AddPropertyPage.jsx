@@ -1,10 +1,5 @@
 import React from 'react';
-import Map from '../Misc/Map';
-
-//
-//  TODO: Dynamically update the map when a new location is searched
-//  TODO: Add pop up when a marker is clicked
-//
+import Map, { Search } from '../Misc/Map';
 
 export default function ListingPage() {
 	return (
@@ -16,15 +11,7 @@ export default function ListingPage() {
 					<div className="row">
 						<div className="col-12 col-lg-7 col-xl-6">
 							<label for="title">Location of Property:</label>
-							<input
-								name="title"
-								id="title"
-								type="text"
-								autoComplete="off"
-								className="form-control property-title-input"
-								placeholder="Property Title"
-								aria-label="Property Title"
-							/>
+							{/* <Search /> */}
 							<br />
 							<div className="row mb-3">
 								<div className="col-8">
