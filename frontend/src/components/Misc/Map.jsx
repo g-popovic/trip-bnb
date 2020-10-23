@@ -6,10 +6,7 @@ import {
 	InfoWindow
 } from '@react-google-maps/api';
 import PriceRating from './PriceRating';
-import usePlacesAutocomplete, {
-	getGeocode,
-	getLatLng
-} from 'use-places-autocomplete';
+import usePlacesAutocomplete, { getGeocode } from 'use-places-autocomplete';
 import {
 	Combobox,
 	ComboboxInput,
@@ -20,9 +17,16 @@ import {
 import '@reach/combobox/styles.css';
 
 const libraries = ['places'];
+
 const mapContainerStyle = {
 	width: '100%',
 	height: '100%'
+};
+
+const options = {
+	disableDefaultUI: true,
+	zoomControl: true,
+	scrollwheel: false
 };
 
 const center = {
@@ -34,10 +38,10 @@ export default function Map(props) {
 	const [myMarker, setMyMarker] = useState(null);
 	const [selected, setSelected] = useState(null);
 
-	const { isLoaded, loadError } = useLoadScript({
-		googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-		libraries
-	});
+	// const { isLoaded, loadError } = useLoadScript({
+	// 	googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+	// 	libraries
+	// });
 
 	const onMapClick = React.useCallback(
 		props.adjustable
@@ -51,12 +55,9 @@ export default function Map(props) {
 		mapRef.current = map;
 	}, []);
 
-	const panTo = React.useCallback(({ lat, lng }) => {
-		mapRef.current.panTo({ lat, lng });
+	const panTo = React.useCallback(bounds => {
+		mapRef.current.fitBounds(bounds, -100);
 	}, []);
-
-	if (loadError) return <h3 className="text-center">Error Loading Map.</h3>;
-	if (!isLoaded) return <h3 className="text-center">Loading Map...</h3>;
 
 	return (
 		<>
@@ -65,7 +66,8 @@ export default function Map(props) {
 				zoom={12}
 				center={center}
 				onClick={onMapClick}
-				onLoad={onMapLoad}>
+				onLoad={onMapLoad}
+				options={options}>
 				{!props.adjustable ? (
 					(props.markers || []).map(markerInfo =>
 						markerInfo.price ? (
@@ -85,7 +87,6 @@ export default function Map(props) {
 				) : !myMarker ? null : (
 					<Marker position={{ lat: myMarker.lat, lng: myMarker.lng }} />
 				)}
-
 				{!selected ? null : (
 					<InfoWindow
 						position={{ lat: selected.lat, lng: selected.lng }}
@@ -137,17 +138,21 @@ export function Search({ panTo }) {
 		}
 	});
 
+	async function handleSelect(address) {
+		setValue(address, false);
+		clearSuggestions();
+
+		try {
+			const results = await getGeocode({ address });
+			const bounds = results[0].geometry.bounds;
+			panTo(bounds);
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
 	return (
-		<Combobox
-			onSelect={async address => {
-				try {
-					const results = await getGeocode({ address });
-					const { lat, lng } = await getLatLng(results[0]);
-					panTo({ lat, lng });
-				} catch (err) {
-					console.log(err);
-				}
-			}}>
+		<Combobox onSelect={address => handleSelect(address)}>
 			<ComboboxInput
 				className="form-control"
 				value={value}

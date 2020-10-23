@@ -10,12 +10,12 @@ export default function ListingPage() {
 					<h1 className="text-center mb-5">Create Property</h1>
 					<div className="row">
 						<div className="col-12 col-lg-7 col-xl-6">
-							<label for="title">Location of Property:</label>
-							{/* <Search /> */}
+							<label htmlFor="title">Location of Property:</label>
+							<Search />
 							<br />
 							<div className="row mb-3">
 								<div className="col-8">
-									<label for="title">Title of Property:</label>
+									<label htmlFor="title">Title of Property:</label>
 									<input
 										name="title"
 										id="title"
@@ -27,11 +27,11 @@ export default function ListingPage() {
 									/>
 								</div>
 								<div className="col-4">
-									<label for="title">Price Per Night</label>
-									<div class="input-group mb-3">
-										<div class="input-group-prepend">
+									<label htmlFor="title">Price Per Night</label>
+									<div className="input-group mb-3">
+										<div className="input-group-prepend">
 											<span
-												class="input-group-text"
+												className="input-group-text"
 												id="basic-addon1">
 												$
 											</span>
@@ -48,7 +48,9 @@ export default function ListingPage() {
 								</div>
 							</div>
 
-							<label for="description">Description of Property:</label>
+							<label htmlFor="description">
+								Description of Property:
+							</label>
 							<textarea
 								name="description"
 								id="description"
