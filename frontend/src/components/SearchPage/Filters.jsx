@@ -1,16 +1,12 @@
 import React from 'react';
+import { Search } from '../Misc/Map';
 
 export default function Filters() {
 	return (
 		<form class="form-row">
 			<div class="col-lg-4 mb-3">
 				<label for="validationCustom03">Location</label>
-				<input
-					type="text"
-					placeholder="Location"
-					class="form-control"
-					id="validationCustom03"
-				/>
+				<Search />
 			</div>
 			<div class="col-lg-2 col-6 mb-3">
 				<label for="validationCustom04">Check In</label>

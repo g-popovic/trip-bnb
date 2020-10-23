@@ -34,14 +34,19 @@ const center = {
 	lng: -79.4
 };
 
+//
+// TODO: Load scripts using useLoadScript() hook instead of <script> tag
+// TODO: Figure out a way to pass the panTo() function to the <Search/> component
+//
+
 export default function Map(props) {
 	const [myMarker, setMyMarker] = useState(null);
 	const [selected, setSelected] = useState(null);
 
-	// const { isLoaded, loadError } = useLoadScript({
-	// 	googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-	// 	libraries
-	// });
+	const { isLoaded, loadError } = useLoadScript({
+		googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+		libraries
+	});
 
 	const onMapClick = React.useCallback(
 		props.adjustable
@@ -58,6 +63,9 @@ export default function Map(props) {
 	const panTo = React.useCallback(bounds => {
 		mapRef.current.fitBounds(bounds, -100);
 	}, []);
+
+	if (loadError) return 'Error Loading Map.';
+	if (!isLoaded) return 'Loading Map...';
 
 	return (
 		<>
@@ -98,7 +106,6 @@ export default function Map(props) {
 					</InfoWindow>
 				)}
 			</GoogleMap>
-			<Search panTo={panTo} />
 		</>
 	);
 }

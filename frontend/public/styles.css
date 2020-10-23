@@ -411,9 +411,50 @@ nav.navbar {
 }
 
 .add-property-map {
-  height: 10rem;
+  height: 25rem;
+}
+
+@media only screen and (min-width: 992px) {
+  .add-property-map {
+    height: calc(100% - 3rem);
+    margin: 0 !important;
+  }
 }
 
 .combobox-popover {
   z-index: 1;
+}
+
+.property-location-label {
+  height: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+.property-images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+  overflow: auto;
+  margin-top: 2rem;
+}
+
+.property-images li {
+  list-style-type: none;
+  margin: 0 0.5rem;
+}
+
+.property-images li img {
+  width: 10rem;
+  height: 10rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 3px;
+}
+
+.add-picture-form {
+  padding: 0;
 }

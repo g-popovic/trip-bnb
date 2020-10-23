@@ -14,7 +14,7 @@ export default function ListingPage() {
 							<Search />
 							<br />
 							<div className="row mb-3">
-								<div className="col-8">
+								<div className="col-12 col-lg-8">
 									<label htmlFor="title">Title of Property:</label>
 									<input
 										name="title"
@@ -26,7 +26,8 @@ export default function ListingPage() {
 										aria-label="Property Title"
 									/>
 								</div>
-								<div className="col-4">
+								<div className="col-12 col-lg-4">
+									<br className="d-lg-none" />
 									<label htmlFor="title">Price Per Night</label>
 									<div className="input-group mb-3">
 										<div className="input-group-prepend">
@@ -60,15 +61,73 @@ export default function ListingPage() {
 								placeholder="Property Description"
 								aria-label="Property Description"
 							/>
-							<br />
+							<br className="d-lg-none" />
 						</div>
-						<div className="col-12 col-lg-5 col-xl-6 text-center">
-							<h2>Images Go Here</h2>
-							<h5>I think...</h5>
+						<div className="col-12 col-lg-5 col-xl-6 text-center mt-lg-0 mt-3">
+							<h4 className="text-left property-location-label">
+								Where is your property?
+							</h4>
 							<div className="add-property-map">
 								<Map adjustable />
 							</div>
 						</div>
+					</div>
+					<hr className="mt-4" />
+					<div>
+						<h4>
+							Add Pictures{' '}
+							<span className="font-weight-light text-muted">
+								(up to 10 images)
+							</span>
+						</h4>
+						<form className="mt-3 col-12 col-lg-5 add-picture-form">
+							<label htmlFor="description">Image Link :</label>
+
+							<div className="input-group">
+								<input
+									name="description"
+									id="description"
+									type="text"
+									className="form-control"
+									placeholder="https://image-link.com"
+									autoComplete="off"
+								/>
+								<div className="input-group-append">
+									<button
+										className="btn btn-primary"
+										type="submit"
+										id="button-addon2">
+										Add <strong>(0/3)</strong>
+									</button>
+								</div>
+							</div>
+						</form>
+						<ul className="property-images">
+							<li>
+								<img src="https://a0.muscache.com/im/pictures/faded4c4-e8f2-4978-8d1d-b9e4438d836a.jpg?im_w=1200" />
+							</li>
+							<li>
+								<img src="https://a0.muscache.com/im/pictures/faded4c4-e8f2-4978-8d1d-b9e4438d836a.jpg?im_w=1200" />
+							</li>
+							<li>
+								<img src="https://a0.muscache.com/im/pictures/faded4c4-e8f2-4978-8d1d-b9e4438d836a.jpg?im_w=1200" />
+							</li>
+							<li>
+								<img src="https://a0.muscache.com/im/pictures/faded4c4-e8f2-4978-8d1d-b9e4438d836a.jpg?im_w=1200" />
+							</li>
+							<li>
+								<img src="https://a0.muscache.com/im/pictures/faded4c4-e8f2-4978-8d1d-b9e4438d836a.jpg?im_w=1200" />
+							</li>
+							<li>
+								<img src="https://a0.muscache.com/im/pictures/faded4c4-e8f2-4978-8d1d-b9e4438d836a.jpg?im_w=1200" />
+							</li>
+							<li>
+								<img src="https://a0.muscache.com/im/pictures/faded4c4-e8f2-4978-8d1d-b9e4438d836a.jpg?im_w=1200" />
+							</li>
+							<li>
+								<img src="https://a0.muscache.com/im/pictures/faded4c4-e8f2-4978-8d1d-b9e4438d836a.jpg?im_w=1200" />
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
