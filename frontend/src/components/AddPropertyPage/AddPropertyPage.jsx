@@ -85,8 +85,8 @@ export default function ListingPage() {
 
 							<div className="input-group">
 								<input
-									name="description"
-									id="description"
+									name="image-link"
+									id="imageLink"
 									type="text"
 									className="form-control"
 									placeholder="https://image-link.com"

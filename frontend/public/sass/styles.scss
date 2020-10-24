@@ -456,3 +456,36 @@ nav.navbar {
 .add-picture-form {
 	padding: 0;
 }
+
+//
+//
+// #################### LOGIN PAGE ####################
+//
+//
+
+.login-page {
+	width: 95%;
+	margin: 0;
+	position: absolute;
+	top: 50% !important;
+	left: 50% !important;
+	transform: translate(-50%, -50%);
+	min-height: 0;
+}
+
+@media only screen and (min-width: $breakpointLarge) {
+	.login-page {
+		width: 25rem;
+	}
+}
+
+.login-buttons {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.link {
+	cursor: pointer;
+}

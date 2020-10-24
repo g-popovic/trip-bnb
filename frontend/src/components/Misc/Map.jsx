@@ -3,10 +3,14 @@ import {
 	GoogleMap,
 	useLoadScript,
 	Marker,
-	InfoWindow
+	InfoWindow,
+	LoadScript
 } from '@react-google-maps/api';
 import PriceRating from './PriceRating';
-import usePlacesAutocomplete, { getGeocode } from 'use-places-autocomplete';
+import usePlacesAutocomplete, {
+	getGeocode,
+	getLatLng
+} from 'use-places-autocomplete';
 import {
 	Combobox,
 	ComboboxInput,
@@ -60,53 +64,52 @@ export default function Map(props) {
 		mapRef.current = map;
 	}, []);
 
-	const panTo = React.useCallback(bounds => {
+	const panTo = React.useCallback((bounds, { lat, lng }) => {
 		mapRef.current.fitBounds(bounds, -100);
+		if (props.adjustable) setMyMarker({ lat, lng });
 	}, []);
 
 	if (loadError) return 'Error Loading Map.';
 	if (!isLoaded) return 'Loading Map...';
 
 	return (
-		<>
-			<GoogleMap
-				mapContainerStyle={mapContainerStyle}
-				zoom={12}
-				center={center}
-				onClick={onMapClick}
-				onLoad={onMapLoad}
-				options={options}>
-				{!props.adjustable ? (
-					(props.markers || []).map(markerInfo =>
-						markerInfo.price ? (
-							<PricedMarker
-								markerInfo={markerInfo}
-								setSelected={setSelected}
-							/>
-						) : (
-							<Marker
-								position={{
-									lat: markerInfo.lat,
-									lng: markerInfo.lng
-								}}
-							/>
-						)
+		<GoogleMap
+			mapContainerStyle={mapContainerStyle}
+			zoom={12}
+			center={center}
+			onClick={onMapClick}
+			onLoad={onMapLoad}
+			options={options}>
+			{!props.adjustable ? (
+				(props.markers || []).map(markerInfo =>
+					markerInfo.price ? (
+						<PricedMarker
+							markerInfo={markerInfo}
+							setSelected={setSelected}
+						/>
+					) : (
+						<Marker
+							position={{
+								lat: markerInfo.lat,
+								lng: markerInfo.lng
+							}}
+						/>
 					)
-				) : !myMarker ? null : (
-					<Marker position={{ lat: myMarker.lat, lng: myMarker.lng }} />
-				)}
-				{!selected ? null : (
-					<InfoWindow
-						position={{ lat: selected.lat, lng: selected.lng }}
-						onCloseClick={() => setSelected(null)}>
-						<div>
-							<h5>Amazing apartment with awesome view!</h5>
-							<PriceRating price={selected.price} />
-						</div>
-					</InfoWindow>
-				)}
-			</GoogleMap>
-		</>
+				)
+			) : !myMarker ? null : (
+				<Marker position={{ lat: myMarker.lat, lng: myMarker.lng }} />
+			)}
+			{!selected ? null : (
+				<InfoWindow
+					position={{ lat: selected.lat, lng: selected.lng }}
+					onCloseClick={() => setSelected(null)}>
+					<div>
+						<h5>Amazing apartment with awesome view!</h5>
+						<PriceRating price={selected.price} />
+					</div>
+				</InfoWindow>
+			)}
+		</GoogleMap>
 	);
 }
 
@@ -151,30 +154,35 @@ export function Search({ panTo }) {
 
 		try {
 			const results = await getGeocode({ address });
+			const { lat, lng } = await getLatLng(results[0]);
 			const bounds = results[0].geometry.bounds;
-			panTo(bounds);
+			panTo(bounds, { lat, lng });
 		} catch (err) {
 			console.log(err);
 		}
 	}
 
 	return (
-		<Combobox onSelect={address => handleSelect(address)}>
-			<ComboboxInput
-				className="form-control"
-				value={value}
-				onChange={e => setValue(e.target.value)}
-				disabled={!ready}
-				placeholder="Find Location"
-			/>
-			<ComboboxPopover className="combobox-popover">
-				<ComboboxList>
-					{status === 'OK' &&
-						data.map(({ id, description }) => (
-							<ComboboxOption key={id} value={description} />
-						))}
-				</ComboboxList>
-			</ComboboxPopover>
-		</Combobox>
+		<LoadScript
+			libraries={libraries}
+			googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
+			<Combobox onSelect={address => handleSelect(address)}>
+				<ComboboxInput
+					className="form-control"
+					value={value}
+					onChange={e => setValue(e.target.value)}
+					disabled={!ready}
+					placeholder="Find Location"
+				/>
+				<ComboboxPopover className="combobox-popover">
+					<ComboboxList>
+						{status === 'OK' &&
+							data.map(({ id, description }) => (
+								<ComboboxOption key={id} value={description} />
+							))}
+					</ComboboxList>
+				</ComboboxPopover>
+			</Combobox>
+		</LoadScript>
 	);
 }

@@ -458,3 +458,37 @@ nav.navbar {
 .add-picture-form {
   padding: 0;
 }
+
+.login-page {
+  width: 95%;
+  margin: 0;
+  position: absolute;
+  top: 50% !important;
+  left: 50% !important;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  min-height: 0;
+}
+
+@media only screen and (min-width: 992px) {
+  .login-page {
+    width: 25rem;
+  }
+}
+
+.login-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.link {
+  cursor: pointer;
+}
