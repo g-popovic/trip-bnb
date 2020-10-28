@@ -489,3 +489,19 @@ nav.navbar {
 .link {
 	cursor: pointer;
 }
+
+//
+//
+// #################### DASHBOARD PAGE ####################
+//
+//
+
+.chart-container {
+	height: 25rem;
+}
+
+@media only screen and (min-width: $breakpointLarge) {
+	.search-by-name {
+		width: 20rem;
+	}
+}

@@ -15,7 +15,7 @@ export default function LoginPage() {
 
 					<div
 						id="carouselExampleControls"
-						class="carousel slide mt-4 mb-3"
+						class="carousel slide mt-4 mb-4"
 						data-ride="carousel"
 						data-interval="false">
 						<div class="carousel-inner">
@@ -32,7 +32,7 @@ export default function LoginPage() {
 								/>
 							</div>
 							<div class="carousel-item">
-								<label htmlFor="title">Username</label>
+								<label htmlFor="title">Email</label>
 								<input
 									name="title"
 									id="title"
@@ -44,11 +44,11 @@ export default function LoginPage() {
 								/>
 							</div>
 							<div class="carousel-item">
-								<label htmlFor="title">Username</label>
+								<label htmlFor="title">Password</label>
 								<input
 									name="title"
 									id="title"
-									type="text"
+									type="password"
 									autoComplete="off"
 									className="form-control"
 									placeholder="Username"
@@ -63,7 +63,7 @@ export default function LoginPage() {
 						</a>
 						<span>
 							<a
-								className="btn btn-secondary mr-3"
+								className="btn btn-outline-secondary mr-3"
 								href="#carouselExampleControls"
 								data-slide="prev">
 								Back

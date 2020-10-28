@@ -1,15 +1,16 @@
 import React from 'react';
-import ListingPage from './ListingPage/ListingPage';
-import SearchPage from './SearchPage/SearchPage';
-import AddPropertyPage from './AddPropertyPage/AddPropertyPage';
-import LoginPage from './LoginPage/LoginPage';
+import ListingPage from './Listing/ListingPage';
+import SearchPage from './Search/SearchPage';
+import AddPropertyPage from './AddProperty/AddPropertyPage';
+import LoginPage from './Login/LoginPage';
+import DashboardPage from './Dashboard/DashboardPage';
 import Navbar from './Misc/Navbar';
 
 export default function App() {
 	return (
 		<>
 			<Navbar />
-			<LoginPage />
+			<DashboardPage />
 		</>
 	);
 }
