@@ -1,5 +1,6 @@
-import React from 'react';
-import Chart from './Chart';
+import React, { useState } from 'react';
+import BarChart from './BarChart';
+import MyProperty from './MyProperty';
 
 export default function DashboardPage() {
 	return (
@@ -9,39 +10,23 @@ export default function DashboardPage() {
 				<div className="search-section">
 					<h1>Earnings Overview</h1>
 
-					<hr className="mt-3 mb-3" />
+					<hr className="mt-4 mb-4" />
 
-					<label htmlFor="cars" className="mr-2">
-						Density:
-					</label>
-					<select name="cars" id="cars">
-						<option value="volvo">Daily</option>
-						<option value="saab">Weely</option>
-						<option value="mercedes">Monthly</option>
-					</select>
+					<h4 className="mb-3">Earnings</h4>
+
 					<div className="chart-container">
-						<Chart />
+						<BarChart />
 					</div>
 
-					<hr className="mt-3 mb-3" />
+					<hr className="mt-4 mb-4" />
 
 					<h4 className="mb-3">My Property</h4>
-					<div className="input-group mb-3 search-by-name">
-						<input
-							type="text"
-							className="form-control"
-							placeholder="Property Name"
-							aria-label="Property Name"
-							aria-describedby="button-addon2"
-						/>
-						<div className="input-group-append">
-							<button
-								className="btn btn-primary"
-								type="submit"
-								id="button-addon2">
-								Search
-							</button>
-						</div>
+
+					<div className="row my-listing-containers">
+						<MyProperty calendar />
+						<MyProperty />
+						<MyProperty />
+						<MyProperty />
 					</div>
 				</div>
 			</div>
