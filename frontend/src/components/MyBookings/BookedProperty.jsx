@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { DayPickerRangeController } from 'react-dates';
 import PriceRating from '../Misc/PriceRating';
 
 export default function MyListing(props) {
-	const [focused, setFocused] = useState(false);
-
 	return (
 		<div className="col-lg-3 col-12 p-2">
 			<div className="card">
@@ -24,23 +21,8 @@ export default function MyListing(props) {
 
 					<PriceRating price="35" />
 				</div>
-				<div className="d-flex">
-					<button className="btn btn-secondary mr-2 property-buttons">
-						Edit
-					</button>
-					<button
-						onClick={() => setFocused(true)}
-						className="btn btn-primary property-buttons">
-						Bookings
-					</button>
-				</div>
-				<div className={'my-property-calendar' + (focused ? ' active' : '')}>
-					<DayPickerRangeController
-						onOutsideClick={() => setFocused(false)}
-						isDayHighlighted={date => date.day() === 6}
-						keepOpenOnDateSelect={false}
-					/>
-				</div>
+
+				<button className="btn btn-primary property-buttons">View</button>
 			</div>
 		</div>
 	);
