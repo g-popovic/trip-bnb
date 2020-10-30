@@ -6,7 +6,7 @@ export default function ListingPage() {
 		<>
 			<div className="background-image"></div>
 			<div className="search-section-wrapper search-section-wrapper-active">
-				<div className="search-section add-property">
+				<div className="page-container add-property">
 					<h1 className="text-center mb-5">Create Property</h1>
 					<div className="row">
 						<div className="col-12 col-lg-7 col-xl-6">

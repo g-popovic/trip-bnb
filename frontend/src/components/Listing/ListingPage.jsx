@@ -24,7 +24,7 @@ export default function ListingPage() {
 			</div>
 			<div className="background-image"></div>
 			<div className="search-section-wrapper search-section-wrapper-active">
-				<div className="search-section listing">
+				<div className="page-container listing">
 					<h2 onClick={() => setTest(true)}>
 						Amazing apartment with awesome view
 					</h2>
@@ -60,16 +60,7 @@ export default function ListingPage() {
 							</div>
 						</div>
 					</div>
-					{/* <div className="row">
-						<Carousel />
 
-						<div className="col-lg-6 col-12">
-							<h2>Amazing apartment with awesome view</h2>
-							<u className="listing-location text-muted text-medium overflow-hidden text-truncate">
-								Budva, Montenegro
-							</u>
-						</div>
-					</div> */}
 					<hr />
 					<div className="row">
 						<div className="col-12 col-lg-8 listing-description">
@@ -96,7 +87,7 @@ export default function ListingPage() {
 								{/* <h3>The Host</h3> */}
 								<div className="host-basic-info">
 									<img
-										className="host-image"
+										className="host-image large"
 										src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=335&q=80"
 									/>
 									<span>

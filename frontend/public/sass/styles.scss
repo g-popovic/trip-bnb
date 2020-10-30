@@ -1,5 +1,6 @@
 $transitionSpeed: 0.5s;
 $breakpointLarge: 992px;
+$breakpointMedium: 768px;
 
 .no-scroll {
 	overflow: hidden;
@@ -17,6 +18,10 @@ nav.navbar {
 	padding-left: 2rem;
 	padding-right: 2rem;
 	z-index: 10;
+}
+
+.font-weight-500 {
+	font-weight: 500;
 }
 
 //
@@ -77,7 +82,7 @@ nav.navbar {
 	overflow: hidden;
 }
 
-.search-section {
+.page-container {
 	background: white;
 	width: 100%;
 	min-height: 30rem;
@@ -92,7 +97,7 @@ nav.navbar {
 }
 
 @media only screen and (min-width: $breakpointLarge) {
-	.search-section {
+	.page-container {
 		width: 90%;
 		max-width: 80rem;
 		margin-bottom: 5rem;
@@ -104,18 +109,18 @@ nav.navbar {
 .search-section-wrapper-active {
 	overflow: visible;
 
-	.search-section {
+	.page-container {
 		top: 3.5rem;
 	}
 
 	@media only screen and (min-width: $breakpointLarge) {
-		.search-section {
+		.page-container {
 			top: 10rem;
 		}
 	}
 }
 
-.search-section .form-row {
+.page-container.form-row {
 	margin-bottom: 1rem;
 }
 
@@ -257,6 +262,11 @@ nav.navbar {
 	object-fit: cover;
 	object-position: center;
 	margin-right: 1rem;
+
+	&.large {
+		width: 9rem;
+		height: 9rem;
+	}
 }
 
 .host-basic-info {
@@ -463,16 +473,11 @@ nav.navbar {
 	width: 95%;
 	margin: 0;
 	position: absolute;
-	top: 50% !important;
+	top: calc(50% + 2rem) !important;
 	left: 50% !important;
 	transform: translate(-50%, -50%);
 	min-height: 0;
-}
-
-@media only screen and (min-width: $breakpointLarge) {
-	.login-page {
-		width: 25rem;
-	}
+	max-width: 25rem;
 }
 
 .login-buttons {
@@ -525,5 +530,23 @@ nav.navbar {
 		opacity: 1;
 		transition: opacity 0.4s ease;
 		z-index: 5;
+	}
+}
+
+//
+//
+// #################### PROFILE PAGE ####################
+//
+//
+
+.profile-page {
+	text-align: center;
+}
+
+@media only screen and (min-width: $breakpointMedium) {
+	.profile-page {
+		min-height: 0;
+		width: 25rem;
+		border-radius: 5px;
 	}
 }

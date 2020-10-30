@@ -7,7 +7,7 @@ export default function DashboardPage() {
 		<>
 			<div className="background-image"></div>
 			<div className="search-section-wrapper search-section-wrapper-active">
-				<div className="search-section">
+				<div className="page-container">
 					<h1>Earnings Overview</h1>
 
 					<hr className="mt-4 mb-4" />

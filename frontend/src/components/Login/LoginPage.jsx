@@ -5,7 +5,7 @@ export default function LoginPage() {
 		<>
 			<div className="background-image"></div>
 			<div className="search-section-wrapper search-section-wrapper-active">
-				<div className="login-page search-section">
+				<div className="login-page page-container">
 					<div className="d-flex justify-content-between align-items-end">
 						<h3>TripBnb</h3>
 						<h5 className="text-muted font-weight-light">
