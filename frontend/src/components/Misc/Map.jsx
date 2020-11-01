@@ -73,43 +73,46 @@ export default function Map(props) {
 	if (!isLoaded) return 'Loading Map...';
 
 	return (
-		<GoogleMap
-			mapContainerStyle={mapContainerStyle}
-			zoom={12}
-			center={center}
-			onClick={onMapClick}
-			onLoad={onMapLoad}
-			options={options}>
-			{!props.adjustable ? (
-				(props.markers || []).map(markerInfo =>
-					markerInfo.price ? (
-						<PricedMarker
-							markerInfo={markerInfo}
-							setSelected={setSelected}
-						/>
-					) : (
-						<Marker
-							position={{
-								lat: markerInfo.lat,
-								lng: markerInfo.lng
-							}}
-						/>
+		<>
+			<Search panTo={panTo} />
+			<GoogleMap
+				mapContainerStyle={mapContainerStyle}
+				zoom={12}
+				center={center}
+				onClick={onMapClick}
+				onLoad={onMapLoad}
+				options={options}>
+				{!props.adjustable ? (
+					(props.markers || []).map(markerInfo =>
+						markerInfo.price ? (
+							<PricedMarker
+								markerInfo={markerInfo}
+								setSelected={setSelected}
+							/>
+						) : (
+							<Marker
+								position={{
+									lat: markerInfo.lat,
+									lng: markerInfo.lng
+								}}
+							/>
+						)
 					)
-				)
-			) : !myMarker ? null : (
-				<Marker position={{ lat: myMarker.lat, lng: myMarker.lng }} />
-			)}
-			{!selected ? null : (
-				<InfoWindow
-					position={{ lat: selected.lat, lng: selected.lng }}
-					onCloseClick={() => setSelected(null)}>
-					<div>
-						<h5>Amazing apartment with awesome view!</h5>
-						<PriceRating price={selected.price} />
-					</div>
-				</InfoWindow>
-			)}
-		</GoogleMap>
+				) : !myMarker ? null : (
+					<Marker position={{ lat: myMarker.lat, lng: myMarker.lng }} />
+				)}
+				{!selected ? null : (
+					<InfoWindow
+						position={{ lat: selected.lat, lng: selected.lng }}
+						onCloseClick={() => setSelected(null)}>
+						<div>
+							<h5>Amazing apartment with awesome view!</h5>
+							<PriceRating price={selected.price} />
+						</div>
+					</InfoWindow>
+				)}
+			</GoogleMap>
+		</>
 	);
 }
 
@@ -152,8 +155,11 @@ export function Search({ panTo }) {
 		setValue(address, false);
 		clearSuggestions();
 
+		console.log(address);
+
 		try {
 			const results = await getGeocode({ address });
+			console.log(results);
 			const { lat, lng } = await getLatLng(results[0]);
 			const bounds = results[0].geometry.bounds;
 			panTo(bounds, { lat, lng });
@@ -163,26 +169,22 @@ export function Search({ panTo }) {
 	}
 
 	return (
-		<LoadScript
-			libraries={libraries}
-			googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
-			<Combobox onSelect={address => handleSelect(address)}>
-				<ComboboxInput
-					className="form-control"
-					value={value}
-					onChange={e => setValue(e.target.value)}
-					disabled={!ready}
-					placeholder="Find Location"
-				/>
-				<ComboboxPopover className="combobox-popover">
-					<ComboboxList>
-						{status === 'OK' &&
-							data.map(({ id, description }) => (
-								<ComboboxOption key={id} value={description} />
-							))}
-					</ComboboxList>
-				</ComboboxPopover>
-			</Combobox>
-		</LoadScript>
+		<Combobox onSelect={address => handleSelect(address)}>
+			<ComboboxInput
+				className="form-control"
+				value={value}
+				onChange={e => setValue(e.target.value)}
+				disabled={!ready}
+				placeholder="Find Location"
+			/>
+			<ComboboxPopover className="combobox-popover">
+				<ComboboxList>
+					{status === 'OK' &&
+						data.map(({ id, description }) => (
+							<ComboboxOption key={id} value={description} />
+						))}
+				</ComboboxList>
+			</ComboboxPopover>
+		</Combobox>
 	);
 }
