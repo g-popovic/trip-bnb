@@ -1,3 +1,3 @@
 # trip-bnb (W.I.P.)
 
-An airbnb clone with all of the major features 
+An airbnb clone with all of the major features. Work in progress.
